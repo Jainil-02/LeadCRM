@@ -10,6 +10,7 @@ const Testimonials = () => {
       avatar: "DF",
       avatarBg: "bg-primary",
       rating: 5,
+      image: "/Avatar Users.png",
     },
     {
       quote:
@@ -19,6 +20,7 @@ const Testimonials = () => {
       avatar: "LW",
       avatarBg: "bg-success",
       rating: 5,
+      image: "/Avatar Users (1).png",
     },
     {
       quote:
@@ -28,6 +30,7 @@ const Testimonials = () => {
       avatar: "M",
       avatarBg: "bg-orange",
       rating: 5,
+      image: "/Avatar Users (2).png",
     },
   ];
 
@@ -51,27 +54,30 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card bg-[#F9F0F8] rounded-2xl p-6 card-shadow hover-lift border border-border"
+              className="bg-[#f5dcf2] rounded-2xl p-6 card-shadow hover-lift border border-border flex flex-col h-full"
             >
-              {/* Quote Icon */}
-              {/* <Quote className="w-8 h-8 text-primary/20 mb-4" /> */}
-
               {/* Quote */}
-              <p className="text-[#2C2C2C]-600 text-md leading-relaxed mb-3">
+              <p className="text-[#2C2C2C] text-md leading-relaxed mb-3">
                 "{testimonial.quote}"
               </p>
-              <div className="ml-auto flex gap-0.5">
+
+              {/* Stars — stays after quote */}
+              <div className="flex gap-0.5 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#090F4E] text-[#090F4E]" />
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-[#090F4E] text-[#090F4E]"
+                  />
                 ))}
               </div>
-              {/* Author */}
-              <div className="flex items-center gap-3 border-t-2 pt-3">
-                <div
-                  className={`w-10 h-10 rounded-full ${testimonial.avatarBg} flex items-center justify-center text-white font-semibold text-sm`}
-                >
-                  {testimonial.avatar}
-                </div>
+
+              {/* Push footer to bottom regardless of quote size */}
+              <div className="border-t-2 pt-3 mt-auto flex items-center gap-3 border-[#7A7A7A4F]">
+                <img
+                  src={testimonial.image}
+                  alt="avatar"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
                 <div>
                   <p className="font-semibold text-foreground text-sm">
                     {testimonial.author}

@@ -14,10 +14,14 @@ const Features = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const mainFeatures = [
-    { icon: Linkedin, label: "CRM Data Enrich" },
-    { icon: Mail, label: "CRM Data Sync" },
-    { icon: Database, label: "Bulk Export & Enrichment" },
-    { icon: Users, label: "AI Productivity" },
+    { icon: Linkedin, label: "CRM Data Enrich", image: "/data.svg" },
+    { icon: Mail, label: "CRM Data Sync", image: "/sync.svg" },
+    {
+      icon: Database,
+      label: "Bulk Export & Enrichment",
+      image: "/compass.png",
+    },
+    { icon: Users, label: "AI Productivity", image: "/brain.png" },
   ];
 
   const detailedFeatures = [
@@ -30,6 +34,7 @@ const Features = () => {
         { icon: Shield, text: "Sales/Account Sync on" },
         { icon: Users, text: "LinkedIn/Email Sync" },
       ],
+      image: "/SearchFilter.png",
     },
     {
       title: "If it does not works for you ! try our",
@@ -40,12 +45,13 @@ const Features = () => {
         { icon: Users, text: "Company Size" },
         { icon: Zap, text: "Career Growth" },
       ],
+      image: "/SearchFilter.png",
     },
   ];
 
   return (
     <section className="py-9 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#090F4E] mb-4">
@@ -58,7 +64,7 @@ const Features = () => {
 
         {/* Main Features */}
 
-        <div className="flex items-center justify-center gap-[75px] pb-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-[75px] pb-3 mb-10">
           {mainFeatures.map((feature, index) => (
             <button
               key={index}
@@ -66,9 +72,9 @@ const Features = () => {
               className="flex flex-col items-center group"
             >
               <div className="flex items-center gap-2">
-                <feature.icon className="w-5 h-5 text-primary" />
+                <img src={feature.image} alt="icon" />
                 <span
-                  className={`text-md text-[#090F4E] font-medium transition ${
+                  className={`text-md font-medium transition ${
                     activeIndex === index
                       ? "text-primary font-semibold"
                       : "text-gray-700"
@@ -78,22 +84,30 @@ const Features = () => {
                 </span>
               </div>
 
-              {/* Underline for Active Tab */}
               <div
                 className={`h-[3px] w-full mt-2 rounded-full transition-all duration-300 ${
                   activeIndex === index ? "bg-[#090F4E]" : "bg-transparent"
                 }`}
-              ></div>
+              />
             </button>
           ))}
         </div>
+        <div className="flex flex-col md:flex-row gap-3 pb-7 items-center justify-center text-center">
+          <p className="text-center">
+            It’s hard to find the accurate contact data for every prospects by{" "}
+          </p>
+
+          <span className="hidden md:inline-flex text-[12px] bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">
+            Incomplete Data
+          </span>
+        </div>
 
         {/* Detailed Features Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto ">
+        <div className="grid md:grid-cols-2 gap-10 max-w-full mx-auto ">
           {detailedFeatures.map((section, sectionIndex) => (
             <div
               key={sectionIndex}
-              className="bg-card rounded-2xl p-6 card-shadow  bg-[#F0F4FD] border border-border"
+              className="bg-card rounded-2xl p-6 card-shadow  bg-[#e6ebf7] border border-border"
             >
               <h3 className="text-lg font-semibold text-foreground mb-2">
                 {section.title}
@@ -103,21 +117,15 @@ const Features = () => {
                   {section.subtitle}
                 </p>
               )}
-              <div className="grid grid-cols-2 gap-4">
-                {section.items.map((item, itemIndex) => (
-                  <div
-                    key={itemIndex}
-                    className="flex items-center gap-3 bg-secondary/50 rounded-lg p-3"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <item.icon className="w-4 h-4 text-primary" />
-                    </div>
-                    <span className="text-sm font-medium text-foreground">
-                      {item.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
+
+              <img
+                  src={section.image}
+                  alt="image"
+                  // className="w-full object-contain"
+
+                  style={{height:'300px', width:'100%'}}
+                />
+             
             </div>
           ))}
         </div>

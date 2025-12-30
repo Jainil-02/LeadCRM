@@ -1,4 +1,5 @@
 import { Twitter, Linkedin, Youtube, Facebook, Instagram } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const footerLinks = {
@@ -6,7 +7,7 @@ const Footer = () => {
       "Salesforce",
       "HubSpot",
       "Pipedrive",
-      "CLose.io",
+      "Close.io",
       "Insightly",
     ],
     Alternatives: ["Surfe VS LeadCRM", "Linkmatch Alternative"],
@@ -15,10 +16,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
+    { icon: Facebook, href: "#" },
     { icon: Twitter, href: "#" },
     { icon: Linkedin, href: "#" },
-    { icon: Youtube, href: "#" },
-    { icon: Facebook, href: "#" },
     { icon: Instagram, href: "#" },
   ];
 
@@ -28,12 +28,13 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Logo & Description */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+            {/* <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
                 <span className="text-black font-bold text-sm">L</span>
               </div>
               <span className="font-bold text-lg">LEADCRM.IO</span>
-            </div>
+            </div> */}
+            <img src="/LeadcrmLogo.png" alt="logo" />
             <p className="text-black text-[16px] mb-6 leading-relaxed">
               LeadCRM is LinkedIn integration tool for your CRM.
             </p>
@@ -43,9 +44,11 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
+                  style={{ backgroundColor: "#01B2D8" }} // Blue tint background
                 >
-                  <social.icon className="w-4 h-4" />
+                  <social.icon className="w-5 h-5 text-white" />{" "}
+                  {/* optional blue icon */}
                 </a>
               ))}
             </div>
@@ -54,7 +57,9 @@ const Footer = () => {
           {/* Footer Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-bold text-[20px] mb-4 text-[#090F4E]">{title}</h4>
+              <h4 className="font-bold text-[20px] mb-4 text-[#090F4E]">
+                {title}
+              </h4>
               <ul className="space-y-2">
                 {links.map((link, index) => (
                   <li key={index}>
@@ -69,6 +74,30 @@ const Footer = () => {
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-end justify-end gap-4 mb-0 mt-0">
+          <Button
+            size="xl"
+            className="bg-[#373737] flex items-center justify-between py-3 px-5 w-fit"
+          >
+            {/* Left Text */}
+            <div className="flex flex-col items-start leading-none">
+              <span className="text-[12px] text-[#E4E4E4] leading-tight">
+                Available in
+              </span>
+              <span className="text-[16px] text-[#E4E4E4] font-medium leading-tight">
+                Chrome Web Store
+              </span>
+            </div>
+
+            {/* Right Icon */}
+            <img
+              src="/chrome-logo 1.png"
+              alt="chrome-logo"
+              className="w-6 h-6 ml-3"
+            />
+          </Button>
         </div>
 
         {/* Bottom Bar */}
